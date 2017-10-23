@@ -32,15 +32,16 @@ function buttonListener() {
 function displayWords() {
   for (let key in wordCount) {
     $('.word-count').append(`<p style="font-size: ${wordCount[key]}em">${key}<p>`)
-    $.ajax({
-      method: 'POST',
-      url: api + '/api/v1/words',
-      data: { word :
-        { key : wordCount[key]} },
-      success: function(data) {
-        console.log("yay")
-      }
-    })
+    postWords(key, wordCount)
+    // $.ajax({
+    //   method: 'POST',
+    //   url: api + '/api/v1/words',
+    //   data: { word :
+    //     { key : wordCount[key]} },
+    //   success: function(data) {
+    //     console.log("yay")
+    //   }
+    // })
   }
 }
 
@@ -48,4 +49,16 @@ function appendTopWord(data) {
   word = Object.keys(data.word)
   count = data['word'].word
   $('.word-count').append(`<p> Top Word: ${word} (${count}) </p>`)
+}
+
+function postWords(key, wordCount) {
+  $.ajax({
+    method: 'POST',
+    url: api + '/api/v1/words',
+    data: { word :
+      { key : wordCount[key]} },
+    success: function(data) {
+      console.log("yay")
+    }
+  })
 }
