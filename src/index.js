@@ -1,7 +1,6 @@
 const $ = require('jquery')
 const api = 'https://wordwatch-api.herokuapp.com'
 let wordCount = {}
-// let button = getElementsByTagName('button')
 
 class Word {
   constructor(word) {
@@ -23,7 +22,6 @@ function getTopWord() {
     success: function(data) {
       word = Object.keys(data.word)
       count = data['word'].word
-      // debugger
       $('.word-count').append(`<p> Top Word: ${word} (${count}) </p>`)
     }
   })
@@ -36,12 +34,25 @@ function buttonListener() {
     words.forEach(function(word) {
       wordCount[word] = (wordCount[word]||0) + 1
     })
-    let sentenceWords = Object.keys(wordCount)
+    displayWords()
+
+
     // debugger
-    for (let key in wordCount) {
-      $('.word-count').append(`<p style="font-size: ${wordCount[key]}em">${key}<p>`)
-    }
-
-
   })
+}
+
+function displayWords() {
+  for (let key in wordCount) {
+    $('.word-count').append(`<p style="font-size: ${wordCount[key]}em">${key}<p>`)
+    $.ajax({
+      method: 'POST',
+      url: api + '/api/v1/words',
+      data: { word :
+        { key : wordCount[key]} },
+        // debugger
+      success: function(data) {
+      }
+    })
+  }
+
 }
