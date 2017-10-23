@@ -14,7 +14,6 @@ function getTopWord() {
     method: 'GET',
     url: api + '/api/v1/top_word',
     success: function(data) {
-      debugger
       $('.word-count').append(`<h3> Top Word: ${data['word']}`)
     }
   })
@@ -22,6 +21,8 @@ function getTopWord() {
 
 function buttonListener() {
   $('button').on('click', function() {
+    let sentence = this.parentElement.children[1].value
+    words = sentence.split(" ")
     debugger
   })
 }
