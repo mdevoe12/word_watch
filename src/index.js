@@ -12,6 +12,7 @@ function getTopWord() {
     url: api + '/api/v1/top_word',
     success: function(data) {
       debugger
+      $('.word-count').append(`<h3> Top Word: ${data['word']}`)
     }
   })
 }
