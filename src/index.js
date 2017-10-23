@@ -2,13 +2,6 @@ const $ = require('jquery')
 const api = 'https://wordwatch-api.herokuapp.com'
 let wordCount = {}
 
-class Word {
-  constructor(word) {
-    this.word = word
-    this.count = 1
-  }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   getTopWord()
   buttonListener()
