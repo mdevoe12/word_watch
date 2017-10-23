@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   buttonListener()
 })
 
-
 function getTopWord() {
   $.ajax({
     method: 'GET',
@@ -33,21 +32,12 @@ function displayWords() {
   for (let key in wordCount) {
     $('.word-count').append(`<p style="font-size: ${wordCount[key]}em">${key}<p>`)
     postWords(key, wordCount)
-    // $.ajax({
-    //   method: 'POST',
-    //   url: api + '/api/v1/words',
-    //   data: { word :
-    //     { key : wordCount[key]} },
-    //   success: function(data) {
-    //     console.log("yay")
-    //   }
-    // })
   }
 }
 
 function appendTopWord(data) {
   word = Object.keys(data.word)
-  count = data['word'].word
+  count = data['word'][`${word}`]
   $('.word-count').append(`<p> Top Word: ${word} (${count}) </p>`)
 }
 
@@ -55,9 +45,8 @@ function postWords(key, wordCount) {
   $.ajax({
     method: 'POST',
     url: api + '/api/v1/words',
-    data: { word :
-      { key : wordCount[key]} },
-    success: function(data) {
+    data: { word: { key: wordCount[key]} },
+    success: function() {
       console.log("yay")
     }
   })
