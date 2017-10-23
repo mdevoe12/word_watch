@@ -2,6 +2,12 @@ const $ = require('jquery')
 const api = 'https://wordwatch-api.herokuapp.com'
 // let button = getElementsByTagName('button')
 
+class Word {
+  constructor(word, count) {
+    this.word = word
+    this.count = count
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   getTopWord()
@@ -14,6 +20,7 @@ function getTopWord() {
     method: 'GET',
     url: api + '/api/v1/top_word',
     success: function(data) {
+      debugger
       $('.word-count').append(`<h3> Top Word: ${data['word']}`)
     }
   })
