@@ -75,11 +75,7 @@ module.exports = __webpack_require__(2);
 /* 1 */
 /***/ (function(module, exports) {
 
-document.addEventListener("DOMContentLoaded", () => {
-  // have fun!
-})
-
-
+throw new Error("Module parse failed: Unexpected token (14:0)\nYou may need an appropriate loader to handle this file type.\n|     url: api + '/api/v1/top_word',\n|     success:\n| ");
 
 /***/ }),
 /* 2 */
