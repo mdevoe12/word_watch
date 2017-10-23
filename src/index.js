@@ -37,10 +37,11 @@ function buttonListener() {
       wordCount[word] = (wordCount[word]||0) + 1
     })
     let sentenceWords = Object.keys(wordCount)
-    sentenceWords.forEach(function(word) {
-      $('.word-count').append(`<p> Top Word: ${word}<p>`)
-    })
-    debugger
+    // debugger
+    for (let key in wordCount) {
+      $('.word-count').append(`<p style="font-size: ${wordCount[key]}em">${key}<p>`)
+    }
+
 
   })
 }
