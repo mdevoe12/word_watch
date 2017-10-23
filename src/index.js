@@ -3,9 +3,9 @@ const api = 'https://wordwatch-api.herokuapp.com'
 // let button = getElementsByTagName('button')
 
 class Word {
-  constructor(word, count) {
+  constructor(word) {
     this.word = word
-    this.count = count
+    this.count = 1
   }
 }
 
@@ -30,6 +30,9 @@ function buttonListener() {
   $('button').on('click', function() {
     let sentence = this.parentElement.children[1].value
     words = sentence.split(" ")
+    counts = words.map(function(word) {
+      return new Word(word)
+    })
     debugger
   })
 }
