@@ -5,9 +5,7 @@ const api = 'https://wordwatch-api.herokuapp.com'
 
 document.addEventListener("DOMContentLoaded", () => {
   getTopWord()
-  $('button').on('click', function() {
-    debugger
-  })
+  buttonListener()
 })
 
 
@@ -19,5 +17,11 @@ function getTopWord() {
       debugger
       $('.word-count').append(`<h3> Top Word: ${data['word']}`)
     }
+  })
+}
+
+function buttonListener() {
+  $('button').on('click', function() {
+    debugger
   })
 }
