@@ -20,9 +20,7 @@ function getTopWord() {
     method: 'GET',
     url: api + '/api/v1/top_word',
     success: function(data) {
-      word = Object.keys(data.word)
-      count = data['word'].word
-      $('.word-count').append(`<p> Top Word: ${word} (${count}) </p>`)
+      appendTopWord(data)
     }
   })
 }
@@ -35,9 +33,6 @@ function buttonListener() {
       wordCount[word] = (wordCount[word]||0) + 1
     })
     displayWords()
-
-
-    // debugger
   })
 }
 
@@ -49,10 +44,15 @@ function displayWords() {
       url: api + '/api/v1/words',
       data: { word :
         { key : wordCount[key]} },
-        // debugger
       success: function(data) {
+        console.log("yay")
       }
     })
   }
+}
 
+function appendTopWord(data) {
+  word = Object.keys(data.word)
+  count = data['word'].word
+  $('.word-count').append(`<p> Top Word: ${word} (${count}) </p>`)
 }
