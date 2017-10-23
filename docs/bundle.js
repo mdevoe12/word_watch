@@ -119,10 +119,11 @@ function appendTopWord(data) {
 }
 
 function postWords(key, wordCount) {
+  debugger
   $.ajax({
     method: 'POST',
     url: api + '/api/v1/words',
-    data: { word: { key: wordCount[key]} },
+    data: { word: { "value": key }},
     success: function() {
       console.log("yay")
     }
