@@ -23,8 +23,8 @@ function getTopWord() {
     success: function(data) {
       word = Object.keys(data.word)
       count = data['word'].word
-      debugger
-      $('.word-count').append(`<h3> Top Word: ${word} (${count})`)
+      // debugger
+      $('.word-count').append(`<p> Top Word: ${word} (${count}) </p>`)
     }
   })
 }
@@ -36,6 +36,11 @@ function buttonListener() {
     words.forEach(function(word) {
       wordCount[word] = (wordCount[word]||0) + 1
     })
+    let sentenceWords = Object.keys(wordCount)
+    sentenceWords.forEach(function(word) {
+      $('.word-count').append(`<p> Top Word: ${word}<p>`)
+    })
     debugger
+
   })
 }
